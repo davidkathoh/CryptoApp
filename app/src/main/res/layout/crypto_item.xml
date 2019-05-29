@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content">
+
+    <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_name"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/crypto_icon" android:layout_marginStart="8dp"
+            app:layout_constraintTop_toTopOf="@+id/crypto_icon" app:layout_constraintEnd_toStartOf="@+id/crypto_price"
+            android:layout_marginEnd="8dp" android:layout_marginTop="8dp"/>
+    <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp" tools:srcCompat="@tools:sample/avatars[9]"
+            android:id="@+id/crypto_icon"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/crytoUpdateDate" app:layout_constraintStart_toEndOf="@+id/crypto_icon"
+            android:layout_marginStart="12dp" app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            android:layout_marginTop="8dp"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/crypto_price" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_name"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
