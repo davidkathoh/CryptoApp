@@ -2,7 +2,6 @@ package com.yoonek.cryptoapp.database
 
 import com.squareup.moshi.JsonClass
 import io.realm.RealmObject
-import io.realm.annotations.PrimaryKey
 
 @JsonClass(generateAdapter = true)
 open class Crypto(

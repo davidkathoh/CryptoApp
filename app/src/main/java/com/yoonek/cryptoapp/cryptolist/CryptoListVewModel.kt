@@ -7,22 +7,22 @@ import androidx.lifecycle.ViewModel
 import com.yoonek.cryptoapp.database.Crypto
 import com.yoonek.cryptoapp.database.CryptoRepository
 import io.realm.Realm
+import io.realm.RealmResults
 
 class CryptoListVewModel : ViewModel() {
 
     private var realm: Realm
     private var repository :CryptoRepository
-      var cryptos:List<Crypto>
+    private var cryptos:RealmResults<Crypto>
 
 
     init {
 
-        cryptos = arrayListOf()
         realm = Realm.getDefaultInstance()
         repository = CryptoRepository(realm)
-       // repository.refresh()
+        repository.refresh()
+        cryptos =    repository.cryptoList()
 
-      cryptos =    repository.cryptoList()
 
 
     }
@@ -32,6 +32,11 @@ class CryptoListVewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         realm.close()
+        cryptos.removeAllChangeListeners()
+    }
+
+    fun getCryptos():RealmResults<Crypto>{
+        return cryptos
     }
 
     private val _navigateToCryptoDetail = MutableLiveData<String>()

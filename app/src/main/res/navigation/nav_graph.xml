@@ -14,5 +14,7 @@
               android:label="fragment_crypto_detail" tools:layout="@layout/fragment_crypto_detail">
         <action android:id="@+id/action_cryptoDetailFragment_to_cryptoListFragment"
                 app:destination="@id/cryptoListFragment"/>
+        <argument android:name="selectedCryptoName" app:argType="string"/>
+
     </fragment>
 </navigation>

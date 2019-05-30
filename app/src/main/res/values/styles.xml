@@ -6,6 +6,23 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/backgroundColor</item>
+
+    </style>
+
+    <style name="Text" parent="Base.TextAppearance.AppCompat.Caption">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+    </style>
+
+    <style name="Text.Primary" parent="Text">
+        <item name="android:textColorPrimary">@color/primaryTextColor</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Text.Secondary" parent="Text">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
 </resources>

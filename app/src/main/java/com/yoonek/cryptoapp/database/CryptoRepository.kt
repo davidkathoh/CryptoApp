@@ -3,6 +3,7 @@ package com.yoonek.cryptoapp.database
 import android.util.Log
 import io.realm.Realm
 import io.realm.RealmResults
+import io.realm.kotlin.where
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,8 +20,10 @@ class CryptoRepository(val realm:Realm){
 
             override fun onResponse(call: Call<List<Crypto>>, response: Response<List<Crypto>>) {
                 if (response.isSuccessful){
-                    Log.e("suss","sussess")
-                    save(response.body()!!) }
+
+                    save(response.body()!!)
+                    Log.e("suss","${response.body()!!.size}")
+                }
             }
         })
     }
@@ -31,11 +34,18 @@ class CryptoRepository(val realm:Realm){
         realm.commitTransaction()
     }
 
-    fun cryptoList():List<Crypto>{
-      val results:  RealmResults<Crypto> =realm.where(Crypto::class.java).findAll()
-        return realm.copyFromRealm(results)
+    fun cryptoList():RealmResults<Crypto>{
+      return realm.where(Crypto::class.java).findAllAsync()
+
     }
 
+    fun getCrypto(name:String): Crypto? {
+        val res = realm.where<Crypto>()
+            .equalTo("name",name).findFirst()
+        return res
+
+
+    }
 
 
 }

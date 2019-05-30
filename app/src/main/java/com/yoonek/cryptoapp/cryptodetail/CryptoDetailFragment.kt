@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProviders
 
 import com.yoonek.cryptoapp.R
 
@@ -16,8 +17,14 @@ class CryptoDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_crypto_detail, container, false)
+        val view = inflater.inflate(R.layout.fragment_crypto_detail, container, false)
+
+        val cryptoName = CryptoDetailFragmentArgs.fromBundle(arguments!!).selectedCryptoName
+
+        val viewModelFactory = CryptoDetailViewModel.CryptoDetailViewModelFactory(cryptoName)
+        val viewModel = ViewModelProviders.of(this,viewModelFactory).get(CryptoDetailViewModel::class.java)
+
+        return view
     }
 
 

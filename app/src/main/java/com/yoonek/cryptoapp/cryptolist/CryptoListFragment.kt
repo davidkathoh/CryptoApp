@@ -10,39 +10,43 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
 import com.yoonek.cryptoapp.R
 import com.yoonek.cryptoapp.database.Crypto
-import com.yoonek.cryptoapp.database.CryptoApi
-import io.realm.Realm
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import io.realm.RealmChangeListener
+import io.realm.RealmResults
 
 class CryptoListFragment : Fragment() {
 
     private lateinit var vewModel: CryptoListVewModel
     private lateinit var recyclerView: RecyclerView
+    private lateinit var crytoAdaper: CrytoAdaper
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_crypto_list, container, false)
+
+
+
         recyclerView = view.findViewById(R.id.recycle_view)
        vewModel = ViewModelProviders.of(this).get(CryptoListVewModel::class.java)
 
+        crytoAdaper = CrytoAdaper(CrytoAdaper.CryptoListener {
+            vewModel.onCryptoClicked(it) })
         recyclerView.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = CrytoAdaper(CrytoAdaper.CryptoListener {
-                vewModel.onCryptoClicked(it)
-            },vewModel.cryptos)
+            adapter =  crytoAdaper
         }
 
+        crytoAdaper.setCryptoList(vewModel.getCryptos())
 
-        vewModel.navigateToCryptoDetail.observe(this, Observer { str ->
-            str?.let {
-                Toast.makeText(context,"$it",Toast.LENGTH_SHORT).show()
+
+
+        vewModel.navigateToCryptoDetail.observe(this, Observer { name ->
+            name?.let {
+                Navigation.findNavController(view).navigate(CryptoListFragmentDirections.actionCryptoListFragmentToCryptoDetailFragment(name))
                 vewModel.cryptoDetailNavigated()
             }
 
@@ -50,6 +54,23 @@ class CryptoListFragment : Fragment() {
 
         return view
     }
+
+    //update the crypto list when it change
+    private var cryptoChangeListener = RealmChangeListener<RealmResults<Crypto>> {
+        crytoAdaper.setCryptoList(it)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        vewModel.getCryptos().addChangeListener (cryptoChangeListener)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        vewModel.getCryptos().removeChangeListener(cryptoChangeListener)
+    }
+
+
 
 
 }

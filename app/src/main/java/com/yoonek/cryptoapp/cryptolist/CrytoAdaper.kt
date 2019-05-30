@@ -1,45 +1,54 @@
 package com.yoonek.cryptoapp.cryptolist
 
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 import com.yoonek.cryptoapp.R
 import com.yoonek.cryptoapp.database.Crypto
 
-class CrytoAdaper(val clickListener:CryptoListener,list: List<Crypto>): RecyclerView.Adapter<CrytoAdaper.CryptoViewHolder>() {
+class CrytoAdaper( private val clickListener:CryptoListener): RecyclerView.Adapter<CrytoAdaper.CryptoViewHolder>() {
 
-    val arr = list
+     private lateinit var crptos :List<Crypto>
+
+    fun setCryptoList( crypos:List<Crypto>){
+        crptos = crypos
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CryptoViewHolder {
 
         return CryptoViewHolder.from(parent)
     }
 
-    override fun getItemCount(): Int {
-       return arr.size
-    }
+    override fun getItemCount() =crptos.size
+
 
     override fun onBindViewHolder(holder: CryptoViewHolder, position: Int) {
-        val item = arr[position]
+        val item = crptos[position]
         holder.bind(item,clickListener)
 
     }
+
+
 
 
     class CryptoViewHolder private constructor(itemView :View): RecyclerView.ViewHolder(itemView) {
 
         val name:TextView = itemView.findViewById(R.id.tv_name)
         val icon:ImageView = itemView.findViewById(R.id.crypto_icon)
-        val date:TextView = itemView.findViewById(R.id.crytoUpdateDate)
+        val symbol:TextView = itemView.findViewById(R.id.crytoSymbol)
+        val price:TextView = itemView.findViewById(R.id.crypto_price)
         //val view = view
 
         fun bind(item: Crypto, clickListener: CryptoListener){
             name.text = item.name
+            symbol.text = item.symbol
+            price.text = "$ ${item.price_usd.toFloat()}"
             Picasso
                 .get()
                 .load(StringBuilder("https://res.cloudinary.com/dxi90ksom/image/upload/")
