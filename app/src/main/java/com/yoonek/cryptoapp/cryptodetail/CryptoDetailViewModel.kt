@@ -9,12 +9,11 @@ import io.realm.Realm
 
 class CryptoDetailViewModel(cryptoName:String) :ViewModel() {
 
-    private var realm: Realm
+    private var realm: Realm = Realm.getDefaultInstance()
     private var repository : CryptoRepository
     lateinit var crypto:Crypto
 
     init {
-        realm = Realm.getDefaultInstance()
         repository = CryptoRepository(realm)
          repository.getCrypto(cryptoName)?.let {
              crypto = it

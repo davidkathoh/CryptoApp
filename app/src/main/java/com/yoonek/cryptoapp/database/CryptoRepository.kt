@@ -40,9 +40,8 @@ class CryptoRepository(val realm:Realm){
     }
 
     fun getCrypto(name:String): Crypto? {
-        val res = realm.where<Crypto>()
+        return realm.where<Crypto>()
             .equalTo("name",name).findFirst()
-        return res
 
 
     }

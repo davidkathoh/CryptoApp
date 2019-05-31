@@ -11,14 +11,13 @@ import io.realm.RealmResults
 
 class CryptoListVewModel : ViewModel() {
 
-    private var realm: Realm
+    private var realm: Realm = Realm.getDefaultInstance()
     private var repository :CryptoRepository
     private var cryptos:RealmResults<Crypto>
 
 
     init {
 
-        realm = Realm.getDefaultInstance()
         repository = CryptoRepository(realm)
         repository.refresh()
         cryptos =    repository.cryptoList()

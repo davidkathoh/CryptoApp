@@ -12,8 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/crypto_price"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/crypto_icon"
@@ -39,7 +37,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:textColor="@color/secondaryTextColor"
         app:layout_constraintStart_toEndOf="@+id/crypto_icon"
         app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 

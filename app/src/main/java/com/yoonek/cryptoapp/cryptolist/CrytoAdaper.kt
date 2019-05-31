@@ -40,7 +40,7 @@ class CrytoAdaper( private val clickListener:CryptoListener): RecyclerView.Adapt
     class CryptoViewHolder private constructor(itemView :View): RecyclerView.ViewHolder(itemView) {
 
         val name:TextView = itemView.findViewById(R.id.tv_name)
-        val icon:ImageView = itemView.findViewById(R.id.crypto_icon)
+        private val icon:ImageView = itemView.findViewById(R.id.crypto_icon)
         val symbol:TextView = itemView.findViewById(R.id.crytoSymbol)
         val price:TextView = itemView.findViewById(R.id.crypto_price)
         //val view = view

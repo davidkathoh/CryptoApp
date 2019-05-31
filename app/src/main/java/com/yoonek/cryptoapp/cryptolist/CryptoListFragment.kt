@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.yoonek.cryptoapp.R
@@ -31,22 +32,21 @@ class CryptoListFragment : Fragment() {
 
 
         recyclerView = view.findViewById(R.id.recycle_view)
-       vewModel = ViewModelProviders.of(this).get(CryptoListVewModel::class.java)
+        vewModel = ViewModelProviders.of(this).get(CryptoListVewModel::class.java)
 
         crytoAdaper = CrytoAdaper(CrytoAdaper.CryptoListener {
-            vewModel.onCryptoClicked(it) })
+            vewModel.onCryptoClicked(it)
+        })
         recyclerView.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter =  crytoAdaper
+            adapter = crytoAdaper
         }
 
         crytoAdaper.setCryptoList(vewModel.getCryptos())
 
-
-
         vewModel.navigateToCryptoDetail.observe(this, Observer { name ->
             name?.let {
-                Navigation.findNavController(view).navigate(CryptoListFragmentDirections.actionCryptoListFragmentToCryptoDetailFragment(name))
+                this.findNavController().navigate(CryptoListFragmentDirections.actionCryptoListFragmentToCryptoDetailFragment(name))
                 vewModel.cryptoDetailNavigated()
             }
 
@@ -62,15 +62,13 @@ class CryptoListFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        vewModel.getCryptos().addChangeListener (cryptoChangeListener)
+        vewModel.getCryptos().addChangeListener(cryptoChangeListener)
     }
 
     override fun onStop() {
         super.onStop()
         vewModel.getCryptos().removeChangeListener(cryptoChangeListener)
     }
-
-
 
 
 }
