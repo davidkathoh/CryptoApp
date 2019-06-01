@@ -1,4 +1,4 @@
-package com.yoonek.cryptoapp.cryptodetail
+package com.example.cryptoapp.cryptodetail
 
 
 import android.graphics.Color
@@ -10,8 +10,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
 
-import com.yoonek.cryptoapp.R
-import com.yoonek.cryptoapp.repo.Crypto
+import com.example.cryptoapp.R
+import com.example.cryptoapp.repo.Crypto
 
 
 class CryptoDetailFragment : Fragment() {

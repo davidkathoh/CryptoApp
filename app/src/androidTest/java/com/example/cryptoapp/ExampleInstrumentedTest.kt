@@ -1,4 +1,4 @@
-package com.yoonek.cryptoapp
+package com.example.cryptoapp
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4

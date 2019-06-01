@@ -1,4 +1,4 @@
-package com.yoonek.cryptoapp
+package com.example.cryptoapp
 
 import org.junit.Test
 

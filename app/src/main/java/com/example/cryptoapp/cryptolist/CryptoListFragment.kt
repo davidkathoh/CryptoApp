@@ -1,4 +1,4 @@
-package com.yoonek.cryptoapp.cryptolist
+package com.example.cryptoapp.cryptolist
 
 
 import android.os.Bundle
@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.yoonek.cryptoapp.R
-import com.yoonek.cryptoapp.repo.Crypto
+import com.example.cryptoapp.R
+import com.example.cryptoapp.repo.Crypto
 import io.realm.RealmChangeListener
 import io.realm.RealmResults
 

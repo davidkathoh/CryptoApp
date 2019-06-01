@@ -1,4 +1,4 @@
-package com.yoonek.cryptoapp.cryptolist
+package com.example.cryptoapp.cryptolist
 
 
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import com.yoonek.cryptoapp.R
-import com.yoonek.cryptoapp.repo.Crypto
+import com.example.cryptoapp.R
+import com.example.cryptoapp.repo.Crypto
 
 class CrytoAdaper( private val clickListener:CryptoListener): RecyclerView.Adapter<CrytoAdaper.CryptoViewHolder>() {
 

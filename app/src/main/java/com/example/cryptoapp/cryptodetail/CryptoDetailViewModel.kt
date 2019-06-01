@@ -1,9 +1,9 @@
-package com.yoonek.cryptoapp.cryptodetail
+package com.example.cryptoapp.cryptodetail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.yoonek.cryptoapp.repo.Crypto
-import com.yoonek.cryptoapp.repo.CryptoRepository
+import com.example.cryptoapp.repo.Crypto
+import com.example.cryptoapp.repo.CryptoRepository
 import io.realm.Realm
 
 class CryptoDetailViewModel(cryptoName:String) :ViewModel() {

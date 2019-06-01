@@ -1,10 +1,10 @@
-package com.yoonek.cryptoapp.cryptolist
+package com.example.cryptoapp.cryptolist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.yoonek.cryptoapp.repo.Crypto
-import com.yoonek.cryptoapp.repo.CryptoRepository
+import com.example.cryptoapp.repo.Crypto
+import com.example.cryptoapp.repo.CryptoRepository
 import io.realm.Realm
 import io.realm.RealmResults
 

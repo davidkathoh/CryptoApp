@@ -4,13 +4,13 @@
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph.xml"
             app:startDestination="@id/cryptoListFragment">
 
-    <fragment android:id="@+id/cryptoListFragment" android:name="com.yoonek.cryptoapp.cryptolist.CryptoListFragment"
+    <fragment android:id="@+id/cryptoListFragment" android:name="com.example.cryptoapp.cryptolist.CryptoListFragment"
               android:label="fragment_crypto_list" tools:layout="@layout/fragment_crypto_list">
         <action android:id="@+id/action_cryptoListFragment_to_cryptoDetailFragment"
                 app:destination="@id/cryptoDetailFragment"/>
     </fragment>
     <fragment android:id="@+id/cryptoDetailFragment"
-              android:name="com.yoonek.cryptoapp.cryptodetail.CryptoDetailFragment"
+              android:name="com.example.cryptoapp.cryptodetail.CryptoDetailFragment"
               android:label="fragment_crypto_detail" tools:layout="@layout/fragment_crypto_detail">
         <action android:id="@+id/action_cryptoDetailFragment_to_cryptoListFragment"
                 app:destination="@id/cryptoListFragment"/>
