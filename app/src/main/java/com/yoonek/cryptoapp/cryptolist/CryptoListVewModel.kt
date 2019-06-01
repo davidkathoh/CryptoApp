@@ -1,11 +1,10 @@
 package com.yoonek.cryptoapp.cryptolist
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.yoonek.cryptoapp.database.Crypto
-import com.yoonek.cryptoapp.database.CryptoRepository
+import com.yoonek.cryptoapp.repo.Crypto
+import com.yoonek.cryptoapp.repo.CryptoRepository
 import io.realm.Realm
 import io.realm.RealmResults
 
@@ -15,18 +14,13 @@ class CryptoListVewModel : ViewModel() {
     private var repository :CryptoRepository
     private var cryptos:RealmResults<Crypto>
 
-
     init {
 
         repository = CryptoRepository(realm)
         repository.refresh()
         cryptos =    repository.cryptoList()
 
-
-
     }
-
-
 
     override fun onCleared() {
         super.onCleared()

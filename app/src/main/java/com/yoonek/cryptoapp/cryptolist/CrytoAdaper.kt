@@ -9,11 +9,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.yoonek.cryptoapp.R
-import com.yoonek.cryptoapp.database.Crypto
+import com.yoonek.cryptoapp.repo.Crypto
 
 class CrytoAdaper( private val clickListener:CryptoListener): RecyclerView.Adapter<CrytoAdaper.CryptoViewHolder>() {
 
-     private lateinit var crptos :List<Crypto>
+    private lateinit var crptos :List<Crypto>
 
     fun setCryptoList( crypos:List<Crypto>){
         crptos = crypos
@@ -33,9 +33,6 @@ class CrytoAdaper( private val clickListener:CryptoListener): RecyclerView.Adapt
         holder.bind(item,clickListener)
 
     }
-
-
-
 
     class CryptoViewHolder private constructor(itemView :View): RecyclerView.ViewHolder(itemView) {
 
@@ -57,8 +54,6 @@ class CrytoAdaper( private val clickListener:CryptoListener): RecyclerView.Adapt
                 .into(icon)
 
             itemView.setOnClickListener { clickListener.onClick(item.name)  }
-
-
 
         }
 

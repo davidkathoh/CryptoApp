@@ -1,4 +1,4 @@
-package com.yoonek.cryptoapp.database
+package com.yoonek.cryptoapp.repo
 
 import com.squareup.moshi.JsonClass
 import io.realm.RealmObject

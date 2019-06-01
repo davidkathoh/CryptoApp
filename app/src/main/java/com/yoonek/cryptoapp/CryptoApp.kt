@@ -1,4 +1,4 @@
-package com.yoonek
+package com.yoonek.cryptoapp
 
 import android.app.Application
 import io.realm.Realm

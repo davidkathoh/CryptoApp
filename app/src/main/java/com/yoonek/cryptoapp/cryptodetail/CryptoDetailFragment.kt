@@ -11,8 +11,7 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProviders
 
 import com.yoonek.cryptoapp.R
-import com.yoonek.cryptoapp.database.Crypto
-import kotlinx.android.synthetic.main.fragment_crypto_detail.*
+import com.yoonek.cryptoapp.repo.Crypto
 
 
 class CryptoDetailFragment : Fragment() {
